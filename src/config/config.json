@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "rpistude_dev_rpi",
+    "password": "rpistude_dev_rpi",
+    "database": "rpistude_dev_rpi",
+    "host": "103.148.14.131",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "rpistude_dev_rpi",
+    "password": "rpistude_dev_rpi",
+    "database": "rpistude_dev_rpi",
+    "host": "103.148.14.131",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "rpistude_dev_rpi",
+    "password": "rpistude_dev_rpi",
+    "database": "rpistude_dev_rpi",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
