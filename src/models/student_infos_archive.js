@@ -1,15 +1,17 @@
-const { Model, DataTypes } = require("sequelize");
-
-module.exports = (sequelize) => {
-  class StudentInfo extends Model {
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class Student extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      StudentInfo.hasMany(models.StudentPayment, {
-        foreignKey: "studentId",
-        sourceKey: "present_education_roll", // sourceKey matches present_education_roll
-      });
+      // define association here
     }
   }
-  StudentInfo.init(
+  Student.init(
     {
       student_name_bangla: DataTypes.STRING,
       fathers_name_bangla: DataTypes.STRING,
@@ -84,9 +86,9 @@ module.exports = (sequelize) => {
     },
     {
       sequelize,
-      modelName: "student_info",
+      modelName: "student_infos_archive",
       timestamps: false,
     }
   );
-  return StudentInfo;
+  return Student;
 };

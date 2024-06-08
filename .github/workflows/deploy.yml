@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
-      
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: podma-bd-cp1.hostever.com
-          username: employee_server@employee-server.rpi.gov.bd
+          username: admin_server_rpi@admin-server.rpi.gov.bd
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /

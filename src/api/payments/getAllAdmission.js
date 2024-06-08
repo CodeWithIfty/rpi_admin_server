@@ -1,7 +1,7 @@
 const { Op } = require("sequelize");
-const { student_info } = require("../../models");
+const { Admission } = require("../../models");
 
-const getAllStudents = async (req, res) => {
+const getAllAdmission = async (req, res) => {
   try {
     // Get page and limit from query parameters, default to page 1 and limit 10
     const page = parseInt(req.query.page) || 1;
@@ -50,7 +50,7 @@ const getAllStudents = async (req, res) => {
     }
 
     // Fetch students with pagination and filtering
-    const { count, rows: students } = await student_info.findAndCountAll({
+    const { count, rows: students } = await Admission.findAndCountAll({
       where: whereClause,
       limit,
       offset,
@@ -72,5 +72,5 @@ const getAllStudents = async (req, res) => {
 };
 
 module.exports = {
-  getAllStudents,
+  getAllAdmission,
 };

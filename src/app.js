@@ -8,8 +8,9 @@ applyMiddleware(app);
 // Auth Routes
 app.use(require("./routes/auth"));
 // Students Routes
-app.use(require("./routes/teacher"));
+app.use(require("./routes/employee/employee"));
 app.use(require("./routes/students/students"));
+app.use(require("./routes/payments/payments"));
 
 app.get("/health", (_req, res) => {
   res.send({ message: "Server is running...." });
