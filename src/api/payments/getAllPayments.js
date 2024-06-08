@@ -19,6 +19,9 @@ const getAllPayments = async (req, res) => {
     const presentEducationSemesters = req.query.semesters
       ? req.query.semesters.split(",")
       : [];
+    const admissions = req.query.admissions
+      ? req.query.admissions.split(",")
+      : [];
 
     // Calculate offset for pagination
     const offset = (page - 1) * limit;
@@ -44,6 +47,9 @@ const getAllPayments = async (req, res) => {
     }
     if (paymentMethods.length > 0) {
       paymentWhereClause.payment_method = { [Op.in]: paymentMethods };
+    }
+    if (admissions.length > 0) {
+      paymentWhereClause.admissionId = { [Op.in]: admissions };
     }
 
     // Build where clause for student_info
