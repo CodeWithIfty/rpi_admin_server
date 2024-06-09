@@ -2,6 +2,7 @@ const {
   archiveSingleStudent,
 } = require("../../api/students/archiveSingleStudent");
 const { changePassword } = require("../../api/students/changePassword");
+const { exportStudentExcel } = require("../../api/students/exportStudentExcel");
 const { getAllStudents } = require("../../api/students/getAllStudents");
 const { getArchiveStudents } = require("../../api/students/getArchiveStudents");
 const getSingleStudentData = require("../../api/students/getSingleStudentData");
@@ -14,6 +15,7 @@ const router = require("express").Router();
 
 router.get("/student/:rollNumber", getSingleStudentData);
 router.get("/students", getAllStudents);
+router.get("/export-students-excel", exportStudentExcel);
 router.get("/archive-students", getArchiveStudents);
 router.delete("/student/:rollNumber", archiveSingleStudent);
 router.post("/restore-student/:rollNumber", restoreArchiveSingleStudent);
