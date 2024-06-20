@@ -5,12 +5,12 @@ require("dotenv").config();
 const app = express();
 applyMiddleware(app);
 
-// Auth Routes
+// Routes
 app.use(require("./routes/auth"));
-// Students Routes
 app.use(require("./routes/employee/employee"));
 app.use(require("./routes/students/students"));
 app.use(require("./routes/payments/payments"));
+app.use(require("./routes/attendance/attendance"));
 
 app.get("/health", (_req, res) => {
   res.send({ message: "Server is running...." });

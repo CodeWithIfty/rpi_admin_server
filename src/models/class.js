@@ -1,12 +1,10 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Shift extends Model {
-    static associate(models) {
-      // define association here
-    }
+  class Class extends Model {
+    static associate(models) {}
   }
-  Shift.init(
+  Class.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -14,12 +12,17 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       name: DataTypes.STRING,
+      department_id: DataTypes.INTEGER,
+      semester_id: DataTypes.INTEGER,
+      shift_id: DataTypes.INTEGER,
+      group_id: DataTypes.INTEGER,
+      date: DataTypes.DATE,
     },
     {
       sequelize,
-      modelName: "shift",
+      modelName: "class",
       timestamps: false,
     }
   );
-  return Shift;
+  return Class;
 };
