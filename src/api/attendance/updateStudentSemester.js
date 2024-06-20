@@ -94,8 +94,9 @@ const updateStudentSemester = async (req, res) => {
             // Save the result into the database
             studentResult = await StudentResult.create({
               student_id: parseInt(roll),
-              results: result,
+              results: JSON.stringify(result), // Store as JSON string in the database
             });
+            console.log("Saved new result:", result);
           }
         } catch (axiosError) {
           results.push({
@@ -119,7 +120,10 @@ const updateStudentSemester = async (req, res) => {
         continue;
       }
 
-      const semesterToUpdate = determineSemesterToUpdate(studentResultData);
+      const semesterToUpdate = determineSemesterToUpdate(
+        studentResultData,
+        student
+      );
 
       if (!semesterToUpdate) {
         results.push({
@@ -152,7 +156,7 @@ const updateStudentSemester = async (req, res) => {
 };
 
 // Helper function to determine semesterToUpdate based on studentResult
-function determineSemesterToUpdate(studentResult) {
+function determineSemesterToUpdate(studentResult, student) {
   // Define the order of semesters
   const semesters = [
     "first_semester",
@@ -215,9 +219,12 @@ function determineSemesterToUpdate(studentResult) {
   if (allSemestersEmpty) {
     return null;
   } else if (lastPassedSemesterIndex === semesters.length - 1) {
-    return "Appeared";
+    return `Passed Out Session - ${student.present_education_season} `;
   } else {
-    return semesterNames[lastPassedSemesterIndex + 1] || "Appeared";
+    return (
+      semesterNames[lastPassedSemesterIndex + 1] ||
+      `Passed Out Session - ${student.present_education_session} `
+    );
   }
 }
 
